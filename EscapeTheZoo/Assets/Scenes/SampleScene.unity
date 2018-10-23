@@ -382,6 +382,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95648720486745864, guid: de7e2ca5a50f4324eaa9fb97eeccd7e7,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7e2ca5a50f4324eaa9fb97eeccd7e7, type: 2}
   m_IsPrefabAsset: 0
@@ -435,3 +440,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationRate: 360
   moveSpeed: 0.1
+  anim: {fileID: 0}
