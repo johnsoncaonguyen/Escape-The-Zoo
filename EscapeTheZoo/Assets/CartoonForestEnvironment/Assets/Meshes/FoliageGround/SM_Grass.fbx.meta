@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 1b9a59caf2a8df24cb2791d2ba68b7d9
+timeCreated: 1492875789
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: SM_Bushes_01
+    100002: SM_FlowersPatchs_01
+    100004: SM_FlowersPatchs_02
+    100006: SM_FlowersPatchs_03
+    100008: SM_FlowersPatchs_04
+    100010: SM_FlowersPatchs_05
+    100012: SM_FlowersPatchs_06
+    100014: SM_FlowersPatchs_07
+    100016: //RootNode
+    100018: SM_GrassPatchs_01
+    100020: SM_GrassPatchs_02
+    100022: SM_GrassPatchs_03
+    100024: SM_GrassPatchs_04
+    100026: SM_Mushrooms_01
+    100028: SM_Mushrooms_02
+    100030: SM_Mushrooms_03
+    100032: SM_Mushrooms_04
+    100034: SM_Mushrooms_05
+    100036: SM_Mushrooms_06
+    400000: SM_Bushes_01
+    400002: SM_FlowersPatchs_01
+    400004: SM_FlowersPatchs_02
+    400006: SM_FlowersPatchs_03
+    400008: SM_FlowersPatchs_04
+    400010: SM_FlowersPatchs_05
+    400012: SM_FlowersPatchs_06
+    400014: SM_FlowersPatchs_07
+    400016: //RootNode
+    400018: SM_GrassPatchs_01
+    400020: SM_GrassPatchs_02
+    400022: SM_GrassPatchs_03
+    400024: SM_GrassPatchs_04
+    400026: SM_Mushrooms_01
+    400028: SM_Mushrooms_02
+    400030: SM_Mushrooms_03
+    400032: SM_Mushrooms_04
+    400034: SM_Mushrooms_05
+    400036: SM_Mushrooms_06
+    2300000: SM_Bushes_01
+    2300002: SM_FlowersPatchs_01
+    2300004: SM_FlowersPatchs_02
+    2300006: SM_FlowersPatchs_03
+    2300008: SM_FlowersPatchs_04
+    2300010: SM_FlowersPatchs_05
+    2300012: SM_FlowersPatchs_06
+    2300014: SM_FlowersPatchs_07
+    2300016: SM_GrassPatchs_01
+    2300018: SM_GrassPatchs_02
+    2300020: SM_GrassPatchs_03
+    2300022: SM_GrassPatchs_04
+    2300024: SM_Mushrooms_01
+    2300026: SM_Mushrooms_02
+    2300028: SM_Mushrooms_03
+    2300030: SM_Mushrooms_04
+    2300032: SM_Mushrooms_05
+    2300034: SM_Mushrooms_06
+    3300000: SM_Bushes_01
+    3300002: SM_FlowersPatchs_01
+    3300004: SM_FlowersPatchs_02
+    3300006: SM_FlowersPatchs_03
+    3300008: SM_FlowersPatchs_04
+    3300010: SM_FlowersPatchs_05
+    3300012: SM_FlowersPatchs_06
+    3300014: SM_FlowersPatchs_07
+    3300016: SM_GrassPatchs_01
+    3300018: SM_GrassPatchs_02
+    3300020: SM_GrassPatchs_03
+    3300022: SM_GrassPatchs_04
+    3300024: SM_Mushrooms_01
+    3300026: SM_Mushrooms_02
+    3300028: SM_Mushrooms_03
+    3300030: SM_Mushrooms_04
+    3300032: SM_Mushrooms_05
+    3300034: SM_Mushrooms_06
+    4300000: SM_FlowersPatchs_01
+    4300002: SM_FlowersPatchs_02
+    4300004: SM_FlowersPatchs_03
+    4300006: SM_FlowersPatchs_04
+    4300008: SM_FlowersPatchs_06
+    4300010: SM_FlowersPatchs_07
+    4300012: SM_FlowersPatchs_05
+    4300014: SM_Mushrooms_01
+    4300016: SM_Mushrooms_02
+    4300018: SM_Mushrooms_03
+    4300020: SM_Mushrooms_04
+    4300022: SM_Mushrooms_05
+    4300024: SM_Mushrooms_06
+    4300026: SM_Bushes_01
+    4300028: SM_GrassPatchs_03
+    4300030: SM_GrassPatchs_04
+    4300032: SM_GrassPatchs_02
+    4300034: SM_GrassPatchs_01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

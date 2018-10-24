@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: db454b3fe10085046836660051f91ef8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: PineTree01
+    100002: PineTree_01
+    100004: PineTree_01_LOD1
+    100006: PineTree_02
+    100008: PineTree_02 1
+    100010: PineTree_02_LOD1
+    100012: PineTree_03
+    100014: PineTree_03 1
+    100016: PineTree_03_LOD1
+    100018: PineTree_04
+    100020: PineTree_04 1
+    100022: PineTree_04_LOD1
+    100024: PineTree_05
+    100026: PineTree_05 1
+    100028: PineTree_05_LOD1
+    100030: PineTree_06
+    100032: PineTree_06 1
+    100034: PineTree_06_LOD1
+    100036: //RootNode
+    400000: PineTree01
+    400002: PineTree_01
+    400004: PineTree_01_LOD1
+    400006: PineTree_02
+    400008: PineTree_02 1
+    400010: PineTree_02_LOD1
+    400012: PineTree_03
+    400014: PineTree_03 1
+    400016: PineTree_03_LOD1
+    400018: PineTree_04
+    400020: PineTree_04 1
+    400022: PineTree_04_LOD1
+    400024: PineTree_05
+    400026: PineTree_05 1
+    400028: PineTree_05_LOD1
+    400030: PineTree_06
+    400032: PineTree_06 1
+    400034: PineTree_06_LOD1
+    400036: //RootNode
+    2300000: PineTree01
+    2300002: PineTree_01_LOD1
+    2300004: PineTree_02 1
+    2300006: PineTree_02_LOD1
+    2300008: PineTree_03 1
+    2300010: PineTree_03_LOD1
+    2300012: PineTree_04 1
+    2300014: PineTree_04_LOD1
+    2300016: PineTree_05 1
+    2300018: PineTree_05_LOD1
+    2300020: PineTree_06 1
+    2300022: PineTree_06_LOD1
+    3300000: PineTree01
+    3300002: PineTree_01_LOD1
+    3300004: PineTree_02 1
+    3300006: PineTree_02_LOD1
+    3300008: PineTree_03 1
+    3300010: PineTree_03_LOD1
+    3300012: PineTree_04 1
+    3300014: PineTree_04_LOD1
+    3300016: PineTree_05 1
+    3300018: PineTree_05_LOD1
+    3300020: PineTree_06 1
+    3300022: PineTree_06_LOD1
+    4300000: PineTree_06
+    4300002: PineTree_06_LOD1
+    4300004: PineTree_05
+    4300006: PineTree_05_LOD1
+    4300008: PineTree_04
+    4300010: PineTree_04_LOD1
+    4300012: PineTree_03
+    4300014: PineTree_03_LOD1
+    4300016: PineTree_02
+    4300018: PineTree_02_LOD1
+    4300020: PineTree01
+    4300022: PineTree_01_LOD1
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert7
+    second: {fileID: 2100000, guid: dd00cf3981d7f114eb7ae2c5f3db5b3b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
