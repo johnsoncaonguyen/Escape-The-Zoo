@@ -114,7 +114,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 8dd249f94ca5ef442bc28691533cb8b4, type: 2}
 --- !u!1001 &1932257
 Prefab:
   m_ObjectHideFlags: 0
@@ -4086,6 +4086,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -4146,13 +4147,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 63.6, y: 7.7, z: 4.6}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 63.6, y: 7.7, z: 4.6000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5757655a978b0147b434fb89b40ee29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 133015210}
 --- !u!1001 &537498287
 Prefab:
   m_ObjectHideFlags: 0
@@ -6791,7 +6804,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 8c764b237a448454ca2554bb87beb93a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 8c764b237a448454ca2554bb87beb93a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -7041,7 +7054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.233
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7085,19 +7098,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
+      propertyPath: m_Name
+      value: Elephant Humanoid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
@@ -13398,7 +13415,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_LocalScale.x
