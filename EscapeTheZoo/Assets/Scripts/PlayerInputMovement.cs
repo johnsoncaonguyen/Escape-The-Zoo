@@ -10,7 +10,7 @@ public class PlayerInputMovement : MonoBehaviour {
     private float inputH;
     private float inputV;
 
-    private float movespeed = 20f;
+    private float movespeed = 40f;
 
 	// Use this for initialization
 	void Start () {
