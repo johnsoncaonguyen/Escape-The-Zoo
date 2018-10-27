@@ -33,14 +33,8 @@ public class AICop : MonoBehaviour {
         {
             case AIStates.Patrol:
                 if (!nav_mesh.pathPending && nav_mesh.remainingDistance < 0.5f)
-                {
-                    if (currWaypoint + 1 == waypoints.Length)
-                    {
-                        AIstate = AIStates.Chase;
-                        ChaseWaypoint();
-                    }
-                    else
-                        SetNextWaypoint();
+                { 
+                    SetNextWaypoint();
                 }
                 if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
                     AIstate = AIStates.Chase;
