@@ -1727,6 +1727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   rbody: {fileID: 0}
+  movespeed: 40
 --- !u!54 &133015212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1755,6 +1756,27 @@ CapsuleCollider:
   m_Height: 1.6864421
   m_Direction: 1
   m_Center: {x: 0, y: 0.8067789, z: 0}
+--- !u!195 &133015216
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 133015210}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &134120881
 Prefab:
   m_ObjectHideFlags: 0
@@ -9204,6 +9226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameMenu: {fileID: 1722381228}
   inGameHUD: {fileID: 1471721955}
+  startTime: 0
   timerText: {fileID: 58034536}
 --- !u!4 &1063712141
 Transform:
@@ -14876,15 +14899,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 102.9
+      value: 108.4
       objectReference: {fileID: 0}
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 88.2
+      value: 85.4
       objectReference: {fileID: 0}
     - target: {fileID: 4338826595224432, guid: a770f91825d3d7c4a8c83aeba4544779, type: 2}
       propertyPath: m_LocalRotation.x
