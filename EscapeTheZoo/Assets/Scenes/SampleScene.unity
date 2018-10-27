@@ -1737,7 +1737,7 @@ Rigidbody:
   m_Mass: 20
   m_Drag: 5
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1752,9 +1752,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 1.6864421
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.8067789, z: 0}
 --- !u!1001 &134120881
 Prefab:
   m_ObjectHideFlags: 0
@@ -8104,7 +8104,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4122b7ed61d48cb40b2570dee7b883a2, type: 3}
       propertyPath: m_LocalPosition.z
