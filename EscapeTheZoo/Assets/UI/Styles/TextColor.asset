@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: New TMP Color Gradient
+  m_Name: TextColor
   m_EditorClassIdentifier: 
-  topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 1, g: 1, b: 1, a: 1}
-  bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-  bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  topLeft: {r: 1, g: 0.8588236, b: 0.27450982, a: 1}
+  topRight: {r: 1, g: 0.8862746, b: 0.2901961, a: 1}
+  bottomLeft: {r: 0.9176471, g: 0.7058824, b: 0.22352943, a: 1}
+  bottomRight: {r: 0.9294118, g: 0.70980394, b: 0.22352943, a: 1}
