@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject inGameMenu;
 	public GameObject inGameHUD;
-
+    public int startTime;
 	public TextMeshProUGUI timerText;
 
 	private bool gameRunning;
@@ -16,10 +16,11 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gameRunning = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        startTime = (int)(Time.time);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 		CheckForEscape ();
 
@@ -30,7 +31,7 @@ public class UIManager : MonoBehaviour {
 	void UpdateTimer(){
 
 		//Debug.Log ("Elapsed Time: " + Time.time);
-		int seconds = (int)(Time.time);
+		int seconds = (int)(Time.time) - startTime;
 		int minutes = seconds / 60;
 		seconds -= minutes * 60;
 
