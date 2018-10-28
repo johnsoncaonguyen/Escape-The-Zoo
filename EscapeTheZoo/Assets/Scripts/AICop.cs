@@ -59,7 +59,7 @@ public class AICop : MonoBehaviour {
 
                 break;
             case AIStates.Chase:
-                if (distanceToPlayer.magnitude < 5)
+                if (distanceToPlayer.magnitude < 3)
                 {
                     print("Calling endgame");
                     endGame(); 
