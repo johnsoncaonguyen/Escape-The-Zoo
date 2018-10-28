@@ -10,7 +10,8 @@ public class PlayerInputMovement : MonoBehaviour {
     private float inputH;
     private float inputV;
 
-    public float movespeed = 20f;
+    public float turnMaxSpeed = 30f;
+    public float moveSpeed = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,17 +21,19 @@ public class PlayerInputMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rbody = GetComponent<Rigidbody>();
+        //rbody = GetComponent<Rigidbody>();
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
 
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
-        float moveX = inputH * movespeed * Time.deltaTime;
-        float moveZ = inputV * movespeed * Time.deltaTime;
+        float moveX = inputH * moveSpeed * Time.deltaTime;
+        float moveZ = inputV * moveSpeed * Time.deltaTime;
 
         //rbody.velocity = new Vector3(moveX, 0f, moveZ);
-        rbody.AddForce(new Vector3(moveX, 0f, moveZ), ForceMode.VelocityChange);
-	}
+        rbody.MoveRotation(rbody.rotation * Quaternion.AngleAxis(inputH * Time.deltaTime * turnMaxSpeed, Vector3.up));
+        rbody.MovePosition(rbody.position + this.transform.forward * inputV * Time.deltaTime * moveSpeed);
+        //rbody.AddForce(new Vector3(moveX, 0f, moveZ), ForceMode.VelocityChange);
+    }
 }
