@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InstructionScript : MonoBehaviour
 {
-    public float time = 5; //Seconds to read the text
+    public float time; //Seconds to read the text
 
     void Start()
     {

@@ -106,6 +106,7 @@ public class AICop : MonoBehaviour {
         gameOver = true;
         gameOverTime = (int)Time.time;
         Animator gameOverAnimator = gameOverHud.GetComponent<Animator>();
+        print(gameOverAnimator);
         gameOverAnimator.Play("GameOver");
     }
 }
