@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class InstructionScript : MonoBehaviour
 {
-    public float time = 5; //Seconds to read the text
+    public GameObject instructionHUD; //Seconds to read the text
+    int startTime;
 
     void Start()
     {
-        Destroy(gameObject, time);
+        startTime = (int)(Time.time);
+    }
+
+    private void Update()
+    {
+        startTime = (int)(Time.time);
+        if (startTime == 8)
+        {
+            Animator instrAnimator = instructionHUD.GetComponent<Animator>();
+            instrAnimator.Play("InstructionClip");
+        }
+
     }
 }
