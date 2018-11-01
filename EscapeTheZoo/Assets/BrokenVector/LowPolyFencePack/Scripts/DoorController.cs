@@ -56,6 +56,7 @@ namespace BrokenVector.LowPolyFencePack
 
         void Awake()
         {
+            
             animator = GetComponent<Animation>();
             if (animator == null)
             {
@@ -74,7 +75,7 @@ namespace BrokenVector.LowPolyFencePack
         }
 
         void Start()
-        {            
+        {
             // a little hack, to set the initial state
             currentState = InitialState;
             var clip = GetCurrentAnimation();
