@@ -17,12 +17,14 @@ public class AICop : MonoBehaviour {
     public GameObject gameOverHud;
     bool gameOver = false;
     int gameOverTime;
+    Animator animator;
     // Use this for initialization
     void Start()
     {
         nav_mesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animation>();
         vReporter = player.GetComponent<VelocityReporter>();
+        animator = GetComponent<Animator>();
         gameOver = false;
         AIstate = AIStates.Patrol;
         SetNextWaypoint();
@@ -43,42 +45,13 @@ public class AICop : MonoBehaviour {
             }
             return;
         }
-        Vector3 distanceToPlayer = (player.transform.position - this.transform.position);
-        float dir = Vector3.Dot(this.transform.forward,distanceToPlayer);
         switch (AIstate)
         {
             case AIStates.Patrol:
-                if (!nav_mesh.pathPending && nav_mesh.remainingDistance < 0.5f)
-                { 
-                    SetNextWaypoint();
-                }
-                if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
-                    AIstate = AIStates.Chase;
-                if (!anim.isPlaying)
-                    anim.Play("Take 001");
-
+                patrol();
                 break;
             case AIStates.Chase:
-                if (distanceToPlayer.magnitude < 3)
-                {
-                    print("Calling endgame");
-                    endGame(); 
-                }
-                if (distanceToPlayer.magnitude > chaseDistance || dir < 0)
-                    AIstate = AIStates.Patrol;
-                if (!nav_mesh.pathPending && nav_mesh.remainingDistance < 1.5f)
-                {
-                    AIstate = AIStates.Patrol;
-                    SetNextWaypoint();
-                }
-                else
-                {
-                    ChaseWaypoint();
-                
-                }
-                if(!anim.isPlaying)
-                    anim.Play("Take 001");
-                    
+                chase();
                 break;
         }
 
@@ -88,6 +61,7 @@ public class AICop : MonoBehaviour {
         Vector3 targetVel = vReporter.Velocity;
         Vector3 predictedPosition = vReporter.prevPos + vReporter.Velocity * Time.deltaTime;
         nav_mesh.SetDestination(predictedPosition);
+        nav_mesh.speed = 7;
     }
     private void SetNextWaypoint()
     {
@@ -96,17 +70,68 @@ public class AICop : MonoBehaviour {
             print("Error: Length of waypoints zero");
             return;
         }
+        nav_mesh.speed = 3;
         currWaypoint = (currWaypoint + 1) % waypoints.Length;
         nav_mesh.SetDestination(waypoints[currWaypoint].transform.position);
 
     }
     private void endGame()
     {
+        nav_mesh.isStopped = true;
+        player.GetComponent<Animator>().SetBool("caught",true);
         print("Game Over");
         gameOver = true;
         gameOverTime = (int)Time.time;
         Animator gameOverAnimator = gameOverHud.GetComponent<Animator>();
-        print(gameOverAnimator);
+        anim.Play("Whistle");
         gameOverAnimator.Play("GameOver");
+    }
+
+    private void patrol()
+    {
+        
+        Vector3 distanceToPlayer = (player.transform.position - this.transform.position);
+        float dir = Vector3.Dot(this.transform.forward, distanceToPlayer);
+
+        if (distanceToPlayer.magnitude < 3)
+        {
+            print("Calling endgame");
+            endGame();
+            return;
+        }
+        if (!nav_mesh.pathPending && nav_mesh.remainingDistance < 0.5f)
+        {
+            SetNextWaypoint();
+        }
+        if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
+            AIstate = AIStates.Chase;
+        anim.Play("Walk");
+    }
+    private void chase()
+    {
+        Vector3 distanceToPlayer = (player.transform.position - this.transform.position);
+        float dir = Vector3.Dot(this.transform.forward, distanceToPlayer);
+
+        if (distanceToPlayer.magnitude < 3)
+        {
+            print("Calling endgame");
+            endGame();
+            return;
+        }
+        if (distanceToPlayer.magnitude > chaseDistance || dir < 0)
+        {
+            AIstate = AIStates.Patrol;
+            return;
+        }
+        if (!nav_mesh.pathPending && nav_mesh.remainingDistance < 1.5f)
+        {
+            AIstate = AIStates.Patrol;
+            SetNextWaypoint();
+        }
+        else
+        {
+            ChaseWaypoint();
+        }
+        anim.Play("Run");
     }
 }
