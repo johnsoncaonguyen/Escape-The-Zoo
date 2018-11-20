@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour {
 	void Start () {
 		gameRunning = true;
         startTime = (int)(Time.time);
+
+		AudioListener.volume = Prefs.GeneralVolume;
     }
 
     // Update is called once per frame

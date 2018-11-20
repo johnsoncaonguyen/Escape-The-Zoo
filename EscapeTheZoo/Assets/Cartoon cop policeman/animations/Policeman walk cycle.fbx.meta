@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c9100ff66cdbaff4d87cb2090b814573
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Character1_Ctrl_ChestEndEffector
     100002: Character1_Ctrl_ChestOriginEffector
@@ -373,7 +373,7 @@ ModelImporter:
     4300008: Policeman:eyes_Sphere
     4300010: Policeman:teeth_bot
     4300012: Policeman:shoes
-    7400000: Take 001
+    7400000: Walk
     9500000: //RootNode
     11100000: //RootNode
     13700000: Policeman:clothes_socks
@@ -413,7 +413,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Walk
       takeName: Take 001
       firstFrame: 1
       lastFrame: 31
@@ -463,6 +463,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -482,7 +484,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1

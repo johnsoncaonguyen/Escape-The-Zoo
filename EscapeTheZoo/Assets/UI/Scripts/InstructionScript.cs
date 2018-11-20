@@ -14,8 +14,8 @@ public class InstructionScript : MonoBehaviour
 
     private void Update()
     {
-        startTime = (int)(Time.time);
-        if (startTime == 8)
+        int timeNow = (int)(Time.time);
+        if (timeNow - startTime > 8)
         {
             Animator instrAnimator = instructionHUD.GetComponent<Animator>();
             instrAnimator.Play("InstructionClip");
