@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInputMovement : MonoBehaviour {
 
-    public Animator anim;
-    public Rigidbody rbody;
+
+	private Animator anim;
+	private Rigidbody rbody;
 
     private float inputH;
     private float inputV;
@@ -15,7 +16,6 @@ public class PlayerInputMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        anim = GetComponent<Animator>();
         rbody = GetComponent<Rigidbody>();
 	}
 	
@@ -25,6 +25,9 @@ public class PlayerInputMovement : MonoBehaviour {
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
 
+		if (anim == null)
+			fillAnimator ();
+		
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
@@ -35,5 +38,12 @@ public class PlayerInputMovement : MonoBehaviour {
         rbody.MoveRotation(rbody.rotation * Quaternion.AngleAxis(inputH * Time.deltaTime * turnMaxSpeed, Vector3.up));
         rbody.MovePosition(rbody.position + this.transform.forward * inputV * Time.deltaTime * moveSpeed);
         //rbody.AddForce(new Vector3(moveX, 0f, moveZ), ForceMode.VelocityChange);
+
+
     }
+
+	void fillAnimator(){
+		GameObject animal = GetComponent<AnimalManager> ().GetActiveAnimal ();
+		anim = animal.GetComponent<Animator>();	
+	}
 }
