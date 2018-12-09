@@ -78,7 +78,7 @@ public class AICop : MonoBehaviour {
     private void endGame()
     {
         nav_mesh.isStopped = true;
-        player.GetComponent<Animator>().SetBool("caught",true);
+        //player.GetComponent<Animator>().SetBool("caught",true);
         print("Game Over");
         gameOver = true;
         gameOverTime = (int)Time.time;
