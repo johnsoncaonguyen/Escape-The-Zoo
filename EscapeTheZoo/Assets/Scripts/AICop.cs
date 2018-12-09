@@ -11,13 +11,15 @@ public class AICop : MonoBehaviour {
     VelocityReporter vReporter;
     public GameObject[] waypoints;
     int currWaypoint = -1;
-    public enum AIStates { Patrol, Chase }
+    public enum AIStates { Patrol, Chase, Flying }
     AIStates AIstate;
     public float chaseDistance;
     public GameObject gameOverHud;
     bool gameOver = false;
     int gameOverTime;
+    float flyTime = 0;
     Animator animator;
+    public GameObject spawnPoint;
     // Use this for initialization
     void Start()
     {
@@ -35,7 +37,6 @@ public class AICop : MonoBehaviour {
     {
         if(gameOver)
         {
-            print(Time.time - gameOverTime);
             if( (int)Time.time - gameOverTime > 3)
             {
                 print("Shifting scene now");
@@ -53,8 +54,27 @@ public class AICop : MonoBehaviour {
             case AIStates.Chase:
                 chase();
                 break;
+            case AIStates.Flying:
+                fly();
+                break;
         }
 
+    }
+    private void fly()
+    {
+        flyTime += Time.deltaTime;
+        
+        if (flyTime > 5)
+        {
+            this.transform.rotation = Quaternion.Euler(0,0,0);
+            this.transform.position = spawnPoint.transform.position;
+            nav_mesh.enabled = true;
+            nav_mesh.isStopped = false;
+            this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            setState(AIStates.Patrol);
+            print("Spawning new cop");
+        }
     }
     private void ChaseWaypoint()
     {
@@ -106,6 +126,20 @@ public class AICop : MonoBehaviour {
         if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
             AIstate = AIStates.Chase;
         anim.Play("Walk");
+    }
+    public void setState(AIStates state)
+    {
+        switch (state)
+        {
+            case AIStates.Flying:
+                flyTime = 0;
+                nav_mesh.isStopped = true;
+                nav_mesh.enabled = false;
+                
+                break;
+        }
+        AIstate = state;
+
     }
     private void chase()
     {

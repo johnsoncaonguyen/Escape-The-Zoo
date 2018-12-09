@@ -10,7 +10,7 @@ public class CompleteCameraController : MonoBehaviour
 	private Vector3 offset;
 	private float horizontal_angle;
 	private float vertical_angle;
-	private float turnSpeed = 4f;
+	private float turnSpeed = 2f;
 	private float cameraInertia = 1.05f;
 
 	void Start()
@@ -21,7 +21,7 @@ public class CompleteCameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (Input.GetMouseButton (0) || Input.GetMouseButton (1)) 
+		if (Input.GetMouseButton (1))// || Input.GetMouseButton (1)) 
 		{
 			horizontal_angle += Input.GetAxis ("Mouse X") * turnSpeed;
 			vertical_angle -= Input.GetAxis ("Mouse Y") * turnSpeed;
@@ -34,7 +34,7 @@ public class CompleteCameraController : MonoBehaviour
 		else
 		{
 			horizontal_angle /= cameraInertia;
-			vertical_angle /= cameraInertia;
+	    	vertical_angle /= cameraInertia;
 		}
 
 		Vector3 centerOfMass = player.transform.position + new Vector3 (0, 2, 0);
