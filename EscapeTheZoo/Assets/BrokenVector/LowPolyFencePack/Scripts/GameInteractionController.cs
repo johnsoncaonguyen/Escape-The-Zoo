@@ -19,6 +19,7 @@ public class GameInteractionController : MonoBehaviour {
             GrabKey gc = collider.gameObject.GetComponent<GrabKey>();
             if (gc.nKeys > 0)
             {
+                print("Opening the door");
                 doorController.OpenDoor();
                 gc.nKeys--;
             }
