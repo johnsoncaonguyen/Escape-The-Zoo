@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObtainWeapon : MonoBehaviour {
 
     bool active = true;
+    public Weapons.weapons weaponType;
     // Use this for initialization
     void Start()
     {
@@ -25,8 +26,8 @@ public class ObtainWeapon : MonoBehaviour {
         if (active)
         {
             Weapons wp = other.gameObject.GetComponent<Weapons>();
-            print("Obtained the glove");
-            wp.setActiveWeapon(Weapons.weapons.GLOVE);
+            print("Obtained the weapon");
+            wp.setActiveWeapon(weaponType);
             active = false;
         }
     }
