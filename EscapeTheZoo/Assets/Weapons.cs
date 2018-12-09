@@ -22,10 +22,21 @@ public class Weapons : MonoBehaviour {
         //get players current orientation and fire the glove in that direction
         weaponModels[(int)weapons.GLOVE].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         weaponModels[(int)weapons.GLOVE].transform.position = this.transform.position;
-        weaponModels[(int)weapons.GLOVE].transform.rotation =  this.transform.rotation * Quaternion.Euler(90, 0, 0) ;
+        weaponModels[(int)weapons.GLOVE].transform.rotation = this.transform.rotation * Quaternion.Euler(90, 0, 0);
         weaponModels[(int)weapons.GLOVE].GetComponentInChildren<GloveHit>().active = true;
         Rigidbody rb = weaponModels[(int)weapons.GLOVE].GetComponent<Rigidbody>();
         rb.velocity = 100 * this.transform.forward;
+        print("setting position to " + this.transform.position);
+        //setActiveWeapon(weapons.NONE);
+
+    }
+    void fireRocket()
+    {
+        //get players current position and place rocket there
+        weaponModels[(int)weapons.ROCKET].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        weaponModels[(int)weapons.ROCKET].transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
+        weaponModels[(int)weapons.ROCKET].GetComponent<Rigidbody>().velocity = Vector3.zero;
+        weaponModels[(int)weapons.ROCKET].GetComponentInChildren<RocketHit>().active = true;
         print("setting position to " + this.transform.position);
         //setActiveWeapon(weapons.NONE);
 
@@ -43,6 +54,7 @@ public class Weapons : MonoBehaviour {
                 break;
             case weapons.ROCKET:
                 print("Firing Rocket");
+                fireRocket();
                 break;
             case weapons.DONUT:
                 print("Firing Donut");
