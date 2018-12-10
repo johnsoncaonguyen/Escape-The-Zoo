@@ -29,6 +29,7 @@ public class DonutHit : MonoBehaviour {
             active = false;
             
             NotificationScreen.getInstance().displayNotification("NEWSFLASH : Diabetes on the rise in Zoo Guards!", Time.time + 1, 3);
+            ScoreSystem.getInstance().addToScore(10, ScoreSystem.scType.DONUT);
         }
     }
 
