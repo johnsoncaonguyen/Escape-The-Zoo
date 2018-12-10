@@ -19,7 +19,7 @@ public class ObtainKey : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (active)
+        if (active & other.tag == "Player")
         {
             GrabKey gc = other.gameObject.GetComponent<GrabKey>();
             NotificationScreen.getInstance().displayNotification("Obtained key to cage!", Time.time, 3);

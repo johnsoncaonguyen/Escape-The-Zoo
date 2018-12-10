@@ -5,6 +5,8 @@ using UnityEngine;
 public class HippoRescue : MonoBehaviour {
     Animation anim;
     bool rescued = false;
+    public enum ANIMALS { HIPPO, LION, GIRAFFE, CROCODILE}
+    public ANIMALS animal = ANIMALS.HIPPO;
     // Use this for initialization
     float rescueTime;
 	void Start () {
@@ -27,10 +29,22 @@ public class HippoRescue : MonoBehaviour {
         {
             rescueTime = Time.time;
             rescued = true;
-            print("Rescued Hippo");
-            anim.Play("Success Hippo");
-            NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! Here is something to help you. I was working on this in my time in the cage.", Time.time , 5);
             ScoreSystem.getInstance().addToScore(100, ScoreSystem.scType.NONE);
+
+            switch (animal)
+            {
+                case ANIMALS.HIPPO:
+                    print("Rescued Hippo");
+                    anim.Play("Success Hippo");
+                    NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! Here is something to help you. I was working on this in my time in the cage.", Time.time, 5);
+                    break;
+                case ANIMALS.CROCODILE:
+                    break;
+                case ANIMALS.GIRAFFE:
+                    break;
+                case ANIMALS.LION:
+                    break;
+            }
         }
     }
 }

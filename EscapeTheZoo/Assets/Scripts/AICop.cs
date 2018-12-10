@@ -17,8 +17,9 @@ public class AICop : MonoBehaviour {
     public GameObject gameOverHud;
     bool gameOver = false;
     int gameOverTime;
-    float flyTime = 0;
+    float flyTime = 0, startTime = 0;
     public GameObject spawnPoint;
+    
     //public bool canFire;
     // Use this for initialization
     void Start()
@@ -28,6 +29,7 @@ public class AICop : MonoBehaviour {
         vReporter = player.GetComponent<VelocityReporter>();
         gameOver = false;
         AIstate = AIStates.Patrol;
+        startTime = 0;
         SetNextWaypoint();
     }
 
@@ -85,7 +87,7 @@ public class AICop : MonoBehaviour {
         Vector3 targetVel = vReporter.Velocity;
         Vector3 predictedPosition = vReporter.prevPos + vReporter.Velocity * Time.deltaTime;
         nav_mesh.SetDestination(predictedPosition);
-        nav_mesh.speed = 7;
+        nav_mesh.speed = 7 + Mathf.Min((Time.time - startTime)/30,7);
     }
     private void SetNextWaypoint()
     {
