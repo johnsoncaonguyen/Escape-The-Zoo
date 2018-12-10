@@ -18,15 +18,14 @@ public class AICop : MonoBehaviour {
     bool gameOver = false;
     int gameOverTime;
     float flyTime = 0;
-    Animator animator;
     public GameObject spawnPoint;
+    //public bool canFire;
     // Use this for initialization
     void Start()
     {
         nav_mesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animation>();
         vReporter = player.GetComponent<VelocityReporter>();
-        animator = GetComponent<Animator>();
         gameOver = false;
         AIstate = AIStates.Patrol;
         SetNextWaypoint();
