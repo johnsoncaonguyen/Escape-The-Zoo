@@ -24,6 +24,7 @@ public class ObtainKey : MonoBehaviour {
             GrabKey gc = other.gameObject.GetComponent<GrabKey>();
             NotificationScreen.getInstance().displayNotification("Obtained key to cage!", Time.time, 3);
             AudioManager.getInstance().playObtained();
+            ScoreSystem.getInstance().addToScore(50, ScoreSystem.scType.NONE);
             gc.giveKey();
             active = false;
         }

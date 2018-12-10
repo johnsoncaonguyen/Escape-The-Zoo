@@ -45,6 +45,7 @@ public class RocketHit : MonoBehaviour {
             isFlying = true;
             flyTime = 0;
             NotificationScreen.getInstance().displayNotification("Zoo Guard found on " + Planets[chooseRandomPlanet()] + ". Alien abduction suspected.",Time.time + 1,3);
+            ScoreSystem.getInstance().addToScore(10, ScoreSystem.scType.ROCKET);
         }
     }
     int chooseRandomPlanet()

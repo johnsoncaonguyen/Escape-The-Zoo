@@ -28,6 +28,8 @@ public class GloveHit : MonoBehaviour {
             rb.AddTorque(totalTorque, ForceMode.Impulse);
             other.gameObject.GetComponent<AudioSource>().Play();
             active = false;
+            ScoreSystem.getInstance().addToScore(10, ScoreSystem.scType.PUNCH);
+
         }
     }
 }

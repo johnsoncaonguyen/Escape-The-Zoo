@@ -30,6 +30,7 @@ public class HippoRescue : MonoBehaviour {
             print("Rescued Hippo");
             anim.Play("Success Hippo");
             NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! Here is something to help you. I was working on this in my time in the cage.", Time.time , 5);
+            ScoreSystem.getInstance().addToScore(100, ScoreSystem.scType.NONE);
         }
     }
 }
