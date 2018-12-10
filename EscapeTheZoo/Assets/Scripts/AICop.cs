@@ -11,22 +11,25 @@ public class AICop : MonoBehaviour {
     VelocityReporter vReporter;
     public GameObject[] waypoints;
     int currWaypoint = -1;
-    public enum AIStates { Patrol, Chase }
+    public enum AIStates { Patrol, Chase, Flying, Eating }
     AIStates AIstate;
     public float chaseDistance;
     public GameObject gameOverHud;
     bool gameOver = false;
     int gameOverTime;
-    Animator animator;
+    float flyTime = 0, startTime = 0;
+    public GameObject spawnPoint;
+    
+    //public bool canFire;
     // Use this for initialization
     void Start()
     {
         nav_mesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animation>();
         vReporter = player.GetComponent<VelocityReporter>();
-        animator = GetComponent<Animator>();
         gameOver = false;
         AIstate = AIStates.Patrol;
+        startTime = 0;
         SetNextWaypoint();
     }
 
@@ -35,7 +38,6 @@ public class AICop : MonoBehaviour {
     {
         if(gameOver)
         {
-            print(Time.time - gameOverTime);
             if( (int)Time.time - gameOverTime > 3)
             {
                 print("Shifting scene now");
@@ -53,15 +55,39 @@ public class AICop : MonoBehaviour {
             case AIStates.Chase:
                 chase();
                 break;
+            case AIStates.Flying:
+                fly();
+                break;
+            case AIStates.Eating:
+                setState(AIStates.Flying);
+                break;
         }
 
+    }
+    private void fly()
+    {
+        flyTime += Time.deltaTime;
+        
+        if (flyTime > 5)
+        {
+            this.transform.rotation = Quaternion.Euler(0,0,0);
+            this.transform.position = spawnPoint.transform.position;
+            nav_mesh.enabled = true;
+            nav_mesh.isStopped = false;
+            this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            setState(AIStates.Patrol);
+            this.GetComponent<Rigidbody>().useGravity = true;
+
+            print("Spawning new cop");
+        }
     }
     private void ChaseWaypoint()
     {
         Vector3 targetVel = vReporter.Velocity;
         Vector3 predictedPosition = vReporter.prevPos + vReporter.Velocity * Time.deltaTime;
         nav_mesh.SetDestination(predictedPosition);
-        nav_mesh.speed = 7;
+        nav_mesh.speed = 7 + Mathf.Min((Time.time - startTime)/30,7);
     }
     private void SetNextWaypoint()
     {
@@ -78,7 +104,7 @@ public class AICop : MonoBehaviour {
     private void endGame()
     {
         nav_mesh.isStopped = true;
-        player.GetComponent<Animator>().SetBool("caught",true);
+        //player.GetComponent<Animator>().SetBool("caught",true);
         print("Game Over");
         gameOver = true;
         gameOverTime = (int)Time.time;
@@ -103,9 +129,31 @@ public class AICop : MonoBehaviour {
         {
             SetNextWaypoint();
         }
-        if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
-            AIstate = AIStates.Chase;
+        if (distanceToPlayer.magnitude < chaseDistance - 10 && dir > 0)
+            setState(AIStates.Chase);
         anim.Play("Walk");
+    }
+    public void setState(AIStates state)
+    {
+        switch (state)
+        {
+            case AIStates.Flying:
+                flyTime = 0;
+                nav_mesh.isStopped = true;
+                nav_mesh.enabled = false;
+                
+                break;
+            case AIStates.Chase:
+                AudioManager.getInstance().playAlert();
+                break;
+            case AIStates.Eating:
+                AudioManager.getInstance().playEat();
+                anim.Play("Eating");
+                this.GetComponent<Rigidbody>().useGravity = false;
+                break;
+        }
+        AIstate = state;
+
     }
     private void chase()
     {

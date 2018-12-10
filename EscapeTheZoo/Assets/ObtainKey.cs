@@ -19,10 +19,12 @@ public class ObtainKey : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (active)
+        if (active & other.tag == "Player")
         {
             GrabKey gc = other.gameObject.GetComponent<GrabKey>();
-            print("Collided with key");
+            NotificationScreen.getInstance().displayNotification("Obtained key to cage!", Time.time, 3);
+            AudioManager.getInstance().playObtained();
+            ScoreSystem.getInstance().addToScore(50, ScoreSystem.scType.NONE);
             gc.giveKey();
             active = false;
         }
