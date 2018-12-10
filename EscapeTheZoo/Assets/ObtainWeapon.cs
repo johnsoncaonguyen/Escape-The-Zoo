@@ -27,7 +27,8 @@ public class ObtainWeapon : MonoBehaviour {
         {
             Weapons wp = other.gameObject.GetComponent<Weapons>();
             print("Obtained the weapon");
-            wp.setActiveWeapon(weaponType);
+            AudioManager.getInstance().playObtained();
+            wp.giveWeapon(weaponType);
             active = false;
         }
     }

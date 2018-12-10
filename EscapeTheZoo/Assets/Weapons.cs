@@ -2,19 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapons : MonoBehaviour {
+public class Weapons : MonoBehaviour
+{
 
-    public enum weapons { NONE = -1, GLOVE = 0, ROCKET = 1, DONUT = 2 };
+    public enum weapons { NONE = -1, GLOVE = 0, ROCKET = 1, DONUT = 2, LAST_WPN };
+    string[] weapons_str = { "GLOVE", "ROCKET", "DONUT" };
     // Use this for initialization
     weapons activeWeapon;
+    int iActive;
+    List<weapons> obtainedWeapons;
     public GameObject[] weaponModels;
-    void Start () {
-        activeWeapon = weapons.NONE;
-	}
-
-	public void setActiveWeapon(weapons weapon)
+    void Start()
     {
-        activeWeapon = weapon;
+        activeWeapon = weapons.NONE;
+        iActive = 0;
+        obtainedWeapons = new List<weapons>();
+    }
+    public void giveWeapon(weapons weapon)
+    {
+        foreach (weapons wpn in obtainedWeapons)
+        {
+            if (wpn == weapon)
+                return;
+        }
+        print("Adding weapon" + weapon);
+        obtainedWeapons.Add(weapon);
+
+        if (obtainedWeapons.Count == 1)
+            setActiveWeapon(0);
+    }
+
+    public void ToggleWeapon()
+    {
+        if (obtainedWeapons.Count > 0)
+        {
+            setActiveWeapon((iActive + 1) % obtainedWeapons.Count);
+        }
+    }
+    public void setActiveWeapon(int i)
+    {
+        iActive = i;
+        activeWeapon = obtainedWeapons[iActive];
+        print("Setting active weapon to " + activeWeapon);
+        WeaponScreen.getInstance().displayWeaponText(weapons_str[(int)activeWeapon]);
     }
 
     void fireGlove()
@@ -41,6 +71,17 @@ public class Weapons : MonoBehaviour {
         //setActiveWeapon(weapons.NONE);
 
     }
+    void fireDonut()
+    {
+        //get players current position and place rocket there
+        weaponModels[(int)weapons.DONUT].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        weaponModels[(int)weapons.DONUT].transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
+        weaponModels[(int)weapons.DONUT].GetComponent<Rigidbody>().velocity = Vector3.zero;
+        weaponModels[(int)weapons.DONUT].GetComponentInChildren<DonutHit>().active = true;
+        print("setting position to " + this.transform.position);
+        //setActiveWeapon(weapons.NONE);
+
+    }
     void fireWeapon()
     {
         switch (activeWeapon)
@@ -50,21 +91,29 @@ public class Weapons : MonoBehaviour {
                 break;
             case weapons.GLOVE:
                 print("Firing glove");
+                AudioManager.getInstance().playFire();
                 fireGlove();
                 break;
             case weapons.ROCKET:
                 print("Firing Rocket");
+                AudioManager.getInstance().playWoosh();
                 fireRocket();
                 break;
             case weapons.DONUT:
                 print("Firing Donut");
+                AudioManager.getInstance().playPlop();
+                fireDonut();
                 break;
         }
     }
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (Input.GetMouseButton(0))
             fireWeapon();
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ToggleWeapon();
+        }
     }
 }

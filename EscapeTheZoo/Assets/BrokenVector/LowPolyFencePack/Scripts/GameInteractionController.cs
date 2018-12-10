@@ -25,6 +25,7 @@ public class GameInteractionController : MonoBehaviour {
             }
             else
             {
+                NotificationScreen.getInstance().displayNotification("You must find the key to the cage!", Time.time, 3);
                 print("Can't open the door");
             }
         }

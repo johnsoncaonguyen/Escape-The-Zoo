@@ -16,7 +16,7 @@ public class GloveHit : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         print("Collided with " + other);
-        if (active)
+        if (active && other.gameObject.tag == "Guard")
         {
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             print("Obtained the rigidbody of cop");

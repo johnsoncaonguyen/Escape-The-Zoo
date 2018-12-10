@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RocketHit : MonoBehaviour {
     public bool active = false;
+    string[] Planets = { "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto","Titan"};
     float flyTime;
     bool isFlying = false;
 	// Use this for initialization
@@ -28,7 +29,7 @@ public class RocketHit : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         print("Collided with " + other);
-        if (active)
+        if (active && other.gameObject.tag == "Guard")
         {
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             print("Obtained the rigidbody of cop");
@@ -43,6 +44,11 @@ public class RocketHit : MonoBehaviour {
             active = false;
             isFlying = true;
             flyTime = 0;
+            NotificationScreen.getInstance().displayNotification("Zoo Guard found on " + Planets[chooseRandomPlanet()] + ". Alien abduction suspected.",Time.time + 1,3);
         }
+    }
+    int chooseRandomPlanet()
+    {
+        return (int)(Planets.Length * Random.value);
     }
 }

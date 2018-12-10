@@ -11,7 +11,7 @@ public class AICop : MonoBehaviour {
     VelocityReporter vReporter;
     public GameObject[] waypoints;
     int currWaypoint = -1;
-    public enum AIStates { Patrol, Chase, Flying }
+    public enum AIStates { Patrol, Chase, Flying, Eating }
     AIStates AIstate;
     public float chaseDistance;
     public GameObject gameOverHud;
@@ -57,6 +57,9 @@ public class AICop : MonoBehaviour {
             case AIStates.Flying:
                 fly();
                 break;
+            case AIStates.Eating:
+                setState(AIStates.Flying);
+                break;
         }
 
     }
@@ -73,6 +76,8 @@ public class AICop : MonoBehaviour {
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             setState(AIStates.Patrol);
+            this.GetComponent<Rigidbody>().useGravity = true;
+
             print("Spawning new cop");
         }
     }
@@ -123,8 +128,8 @@ public class AICop : MonoBehaviour {
         {
             SetNextWaypoint();
         }
-        if (distanceToPlayer.magnitude < chaseDistance && dir > 0)
-            AIstate = AIStates.Chase;
+        if (distanceToPlayer.magnitude < chaseDistance - 10 && dir > 0)
+            setState(AIStates.Chase);
         anim.Play("Walk");
     }
     public void setState(AIStates state)
@@ -136,6 +141,14 @@ public class AICop : MonoBehaviour {
                 nav_mesh.isStopped = true;
                 nav_mesh.enabled = false;
                 
+                break;
+            case AIStates.Chase:
+                AudioManager.getInstance().playAlert();
+                break;
+            case AIStates.Eating:
+                AudioManager.getInstance().playEat();
+                anim.Play("Eating");
+                this.GetComponent<Rigidbody>().useGravity = false;
                 break;
         }
         AIstate = state;
