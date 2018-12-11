@@ -10,6 +10,7 @@ public class AICop : MonoBehaviour {
     public GameObject[] waypoints;
     public GameObject gameOverHud;
     public GameObject spawnPoint;
+    public Rigidbody rB;
     NavMeshAgent nav_mesh;
     Animation anim;
     VelocityReporter vReporter;
@@ -29,6 +30,7 @@ public class AICop : MonoBehaviour {
         nav_mesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animation>();
         vReporter = player.GetComponent<VelocityReporter>();
+        rB = GetComponent<Rigidbody>();
         gameOver = false;
         AIstate = AIStates.Patrol;
         startTime = 0;
@@ -49,6 +51,8 @@ public class AICop : MonoBehaviour {
             }
             return;
         }
+        rB.velocity = Vector3.zero;
+        rB.angularVelocity = Vector3.zero;
         switch (AIstate)
         {
             case AIStates.Patrol:

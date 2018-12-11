@@ -28,9 +28,9 @@ public class ScoreSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = "Chaos Score : "+curScore;
-        gameOverText.text = "Game Over \n Your Score : " + curScore;
-        gameEndText.text = "You escaped \n Your Score : " + curScore;
+        scoreText.text = "Chaos Score : "+ (int)curScore;
+        gameOverText.text = "Game Over \n Your Score : " + (int)curScore;
+        gameEndText.text = "You escaped \n Your Score : " + (int)curScore;
     }
 
     public void addToScore(float val, scType mType)

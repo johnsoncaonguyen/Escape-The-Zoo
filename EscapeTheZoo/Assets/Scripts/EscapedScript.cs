@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class EscapedScript : MonoBehaviour {
 
     bool winGame = false;
+    int startTime;
     public GameObject winGameHud;
     int winGameTime;
 	// Use this for initialization
 	void Start () {
         winGame = false;
+        startTime = (int)Time.time;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,9 @@ public class EscapedScript : MonoBehaviour {
         winGame = true;
         winGameTime = (int)Time.time;
         Animator youEscaped = winGameHud.GetComponent<Animator>();
+        int bonusScore = 5 * Mathf.Max(0, 10 - (winGameTime - startTime) / 60);
+        Debug.Log(bonusScore);
+        ScoreSystem.getInstance().addToScore(200 + bonusScore, ScoreSystem.scType.NONE);
         youEscaped.Play("WinGameClip");
         GameData gd = new GameData();
         gd.Load();
