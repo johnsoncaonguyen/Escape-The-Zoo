@@ -120,12 +120,16 @@ namespace BrokenVector.LowPolyFencePack
         {
             var clip = GetCurrentAnimation();
             animator[clip].speed = AnimationSpeed;
-            animator.Play(clip);
+            Debug.Log("Playing" + clip);
+            bool result = animator.Play(clip);
+            Debug.Log("Playing the clip was " + result);
         }
 
         private string GetCurrentAnimation()
         {
-            return CurrentState.ToString();
+            if (CurrentState == DoorState.Open)
+                return "DoorOpen";
+            return "DoorClose";
         }
     }
 }

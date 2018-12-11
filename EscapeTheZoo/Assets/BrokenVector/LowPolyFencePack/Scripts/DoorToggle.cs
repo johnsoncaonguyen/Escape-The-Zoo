@@ -17,11 +17,7 @@ namespace BrokenVector.LowPolyFencePack
         {
             doorController = GetComponent<DoorController>();
         }
-
-	    void OnMouseDown()
-	    {
-	        doorController.ToggleDoor();
-	    }
+        
 
 	}
 }

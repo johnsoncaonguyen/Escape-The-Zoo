@@ -8,11 +8,11 @@ public class PlayerInputMovement : MonoBehaviour {
 	private Animator anim;
 	private Rigidbody rbody;
     private CharacterController controller;
-
+    private Vector3 kickForce;
     private float inputH;
     private float inputV;
     private bool isGrounded;
-
+    private bool kick;
 
 
     public float turnMaxSpeed = 30f;
@@ -21,15 +21,16 @@ public class PlayerInputMovement : MonoBehaviour {
     public float velocityY = 0f;
     public float gravity = -5.0f;
 
+
     // Use this for initialization
     void Start () {
         rbody = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        kick = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        rbody = GetComponent<Rigidbody>();
         inputH = Input.GetAxis("Horizontal");
         inputV = Input.GetAxis("Vertical");
 
@@ -39,24 +40,31 @@ public class PlayerInputMovement : MonoBehaviour {
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
-        float realSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+        float realSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
 
         float moveX = inputH * turnMaxSpeed * Time.deltaTime;
         float moveZ = inputV * realSpeed * Time.deltaTime;
 
-        Debug.Log("Force: " + new Vector3(0f, 0f, moveZ));
-        Debug.Log("Torque: " + new Vector3(moveX, 0f, 0f));
-        rbody.AddForce(new Vector3(0f, 0f, 1000 * moveZ), ForceMode.Impulse);
-        rbody.AddTorque(new Vector3(1000 * moveX, 0f, 0f), ForceMode.Impulse);
+        //rbody.AddForce(new Vector3(0f, 0f, 10 * moveZ), ForceMode.Impulse);
+        //rbody.AddTorque(new Vector3(10 * moveX, 0f, 0f), ForceMode.Impulse);
 
         //Debug.Log("MoveX: " + moveX);
         //Debug.Log("MoveZ: " + moveZ);
 
-        transform.Rotate(0, moveX, 0);
-        transform.Translate(0, 0, moveZ);
-        //rbody.velocity = new Vector3(moveX, 0f, moveZ);
-        //rbody.MoveRotation(rbody.rotation * Quaternion.AngleAxis(inputH * Time.deltaTime * turnMaxSpeed, Vector3.up));
-        //rbody.MovePosition(rbody.position + this.transform.forward * inputV * Time.deltaTime * moveSpeed);
+        /*transform.Rotate(0, moveX, 0);
+        if (kick)
+        {
+            rbody.AddForce(new Vector3(0f, 0f, 1000 * -moveZ), ForceMode.Impulse);
+            kick = false;
+        }
+        else
+            transform.Translate(0, 0, moveZ);
+            */
+        rbody.velocity = Vector3.zero;
+        rbody.angularVelocity = Vector3.zero;
+        rbody.velocity = new Vector3(moveX, 0f, moveZ);
+        rbody.MoveRotation(rbody.rotation * Quaternion.AngleAxis(inputH * Time.deltaTime * turnMaxSpeed, Vector3.up));
+        rbody.MovePosition(rbody.position + this.transform.forward * inputV * Time.deltaTime * realSpeed);
         //rbody.AddForce(new Vector3(moveX, 0f, moveZ), ForceMode.VelocityChange);
         //velocityY += gravity * Time.deltaTime;
 
@@ -92,7 +100,14 @@ public class PlayerInputMovement : MonoBehaviour {
         //    velocityY = 0;
         //}
     }
-
+    void LateUpdate()
+    {
+    }
+    public void addKick(Vector3 f)
+    {
+        kick = true;
+        kickForce = f;
+    }
     void FixedUpdate()
     {
 

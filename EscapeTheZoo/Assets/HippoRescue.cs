@@ -39,10 +39,19 @@ public class HippoRescue : MonoBehaviour {
                     NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! Here is something to help you. I was working on this in my time in the cage.", Time.time, 5);
                     break;
                 case ANIMALS.CROCODILE:
+                    print("Rescued Croc");
+                    anim.Play("Success Crocodile");
+                    NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! Here is something to help you. I stole this from one of the guards.", Time.time, 5);
                     break;
                 case ANIMALS.GIRAFFE:
+                    print("Rescued Hippo");
+                    anim.Play("Success Giraffe");
+                    NotificationScreen.getInstance().displayNotification("Thanks for rescuing me! I have nothing to give you.", Time.time, 5);
                     break;
                 case ANIMALS.LION:
+                    print("Rescued Hippo");
+                    anim.Play("Success Hippo");
+                    NotificationScreen.getInstance().displayNotification("ROAR! Thanks for rescuing me! Here is something to help you. It dropped out of the sky.", Time.time, 5);
                     break;
             }
         }

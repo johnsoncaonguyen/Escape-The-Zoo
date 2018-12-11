@@ -78,6 +78,7 @@ public class AICop : MonoBehaviour {
             this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             setState(AIStates.Patrol);
             this.GetComponent<Rigidbody>().useGravity = true;
+            SetNextWaypoint();
 
             print("Spawning new cop");
         }

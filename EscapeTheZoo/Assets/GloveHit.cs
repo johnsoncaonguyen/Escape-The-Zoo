@@ -24,6 +24,7 @@ public class GloveHit : MonoBehaviour {
             Vector3 totalForce = 4 * this.GetComponent<Rigidbody>().velocity + new Vector3(0, 500, 0);
             Vector3 totalTorque = new Vector3(100, 100, 100);
             print("Total force added " + totalForce);
+            rb.useGravity = false;
             rb.AddForce(totalForce, ForceMode.Impulse);
             rb.AddTorque(totalTorque, ForceMode.Impulse);
             other.gameObject.GetComponent<AudioSource>().Play();
