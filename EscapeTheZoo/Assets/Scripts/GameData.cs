@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -8,7 +9,7 @@ public class GameData {
 
     public List<float> scores = new List<float>();
     int scoreLength = 3;
-    static string path = Application.dataPath + "/scores1.dat";
+    static string path = Application.dataPath + "\\scores1.dat";
     
     public void updateScore(float score)
     {
@@ -37,8 +38,16 @@ public class GameData {
             scores = (List<float>)bf.Deserialize(file);
             file.Close();
         }
-        catch (FileNotFoundException)
+        catch (Exception e)
         {
+            FileStream file1 = File.Open(path, FileMode.OpenOrCreate);
+            scores.Add(0);
+            scores.Add(0);
+            scores.Add(0);
+            bf.Serialize(file1, scores);
+            file1.Close();
+
+            Debug.Log("error while writing file");
         }
     }
 }
