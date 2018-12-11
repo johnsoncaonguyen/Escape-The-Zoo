@@ -25,9 +25,6 @@ public class GameInteractionController : MonoBehaviour {
             }
             else
             {
-                PlayerInputMovement rb = collider.gameObject.GetComponent<PlayerInputMovement>();
-                Vector3 force = 10000 * Vector3.one; //this.transform.up;
-                rb.addKick(force);
                 NotificationScreen.getInstance().displayNotification("You must find the key to the cage!", Time.time, 3);
                 print("Can't open the door");
             }
