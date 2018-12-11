@@ -21,7 +21,11 @@ public class NotificationScreen : MonoBehaviour {
     }
     void Start()
     {
-        notifyText = "";
+
+        notifyText = "This is your time to escape!!!" +
+            " 1. Find keys and free your friends" +
+            " 2. Avoid the securityguards" +
+            " 3. Escape the Zoo";
         startTime = Time.time;
         duration = 8;
     }
