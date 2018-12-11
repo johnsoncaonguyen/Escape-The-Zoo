@@ -11,6 +11,7 @@ public class PlayerInputMovement : MonoBehaviour {
     private Vector3 kickForce;
     private float inputH;
     private float inputV;
+    private float realSpeed;
     private bool isGrounded;
     private bool kick;
 
@@ -18,8 +19,6 @@ public class PlayerInputMovement : MonoBehaviour {
     public float turnMaxSpeed = 30f;
     public float moveSpeed = 30f;
     public float sprintSpeed = 60f;
-    public float velocityY = 0f;
-    public float gravity = -5.0f;
 
 
     // Use this for initialization
@@ -40,7 +39,11 @@ public class PlayerInputMovement : MonoBehaviour {
         anim.SetFloat("inputH", inputH);
         anim.SetFloat("inputV", inputV);
 
-        float realSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+        realSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+
+        anim.SetFloat("realSpeed", realSpeed);
+
+        Debug.Log("RealSpeed: " + realSpeed);
 
         float moveX = inputH * turnMaxSpeed * Time.deltaTime;
         float moveZ = inputV * realSpeed * Time.deltaTime;
