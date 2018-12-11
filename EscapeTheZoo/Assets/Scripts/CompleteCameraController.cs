@@ -21,23 +21,28 @@ public class CompleteCameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (Input.GetMouseButton (1))// || Input.GetMouseButton (1)) 
-		{
-			horizontal_angle += Input.GetAxis ("Mouse X") * turnSpeed;
-			vertical_angle -= Input.GetAxis ("Mouse Y") * turnSpeed;
+		//if (Input.GetMouseButton (1))// || Input.GetMouseButton (1)) 
+		//{
+		//	//horizontal_angle += Input.GetAxis ("Mouse X") * turnSpeed;
+		//	vertical_angle -= Input.GetAxis ("Mouse Y") * turnSpeed;
 
-			vertical_angle = Mathf.Clamp (vertical_angle, 10-camera_height, 80 - camera_height);
-			//horizontal_angle = Mathf.Clamp (horizontal_angle, -180, 180);
+		//	vertical_angle = Mathf.Clamp (vertical_angle, 10-camera_height, 80 - camera_height);
+		//	//horizontal_angle = Mathf.Clamp (horizontal_angle, -180, 180);
 				
-			//Debug.Log ("Angles: " + horizontal_angle +", " + vertical_angle);
-		}
-		else
-		{
-			horizontal_angle /= cameraInertia;
-	    	vertical_angle /= cameraInertia;
-		}
+		//	//Debug.Log ("Angles: " + horizontal_angle +", " + vertical_angle);
+		//}
+		//else
+		//{
+		//	horizontal_angle /= cameraInertia;
+	 //   	vertical_angle /= cameraInertia;
+		//}
 
-		Vector3 centerOfMass = player.transform.position + new Vector3 (0, 2, 0);
+        horizontal_angle += Input.GetAxis("Mouse X") * turnSpeed;
+        vertical_angle -= Input.GetAxis("Mouse Y") * turnSpeed;
+
+        vertical_angle = Mathf.Clamp(vertical_angle, 10 - camera_height, 80 - camera_height);
+
+        Vector3 centerOfMass = player.transform.position + new Vector3 (0, 2, 0);
 
 		Vector3 forwardV = Quaternion.AngleAxis(horizontal_angle, Vector3.up) * player.transform.forward;
 
