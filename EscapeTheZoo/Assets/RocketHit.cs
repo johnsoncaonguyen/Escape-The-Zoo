@@ -28,7 +28,6 @@ public class RocketHit : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        print("Collided with " + other);
         if (active && other.gameObject.tag == "Guard")
         {
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();

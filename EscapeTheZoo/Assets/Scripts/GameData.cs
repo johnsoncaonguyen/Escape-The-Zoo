@@ -16,14 +16,14 @@ public class GameData {
         scores.Sort();
         scores.Reverse();
         if(scores.Count > scoreLength)
-            scores.RemoveAt(scoreLength - 1);
+            scores.RemoveAt(scoreLength);
     }
 
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(path, FileMode.OpenOrCreate);
-
+        Debug.Log("Saving scores");
         bf.Serialize(file, scores);
         file.Close();
     }

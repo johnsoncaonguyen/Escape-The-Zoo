@@ -28,7 +28,6 @@ public class RescueScript : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        print("Collided with " + other);
         if (other.gameObject.tag == "Player" & !rescued)
         {
             rescueTime = Time.time;

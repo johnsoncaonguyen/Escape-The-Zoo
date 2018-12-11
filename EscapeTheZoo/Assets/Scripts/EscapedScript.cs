@@ -20,7 +20,6 @@ public class EscapedScript : MonoBehaviour {
 	void Update () {
         if (winGame)
         {
-            print(Time.time - winGameTime);
             if ((int)Time.time - winGameTime > 3)
             {
                 print("Shifting scene now");

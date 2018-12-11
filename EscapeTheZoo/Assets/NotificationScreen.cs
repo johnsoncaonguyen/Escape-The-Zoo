@@ -10,6 +10,7 @@ public class NotificationScreen : MonoBehaviour {
     float duration;
     public Text textBox;
     static NotificationScreen instance;
+    public static bool gameOver;
     // Use this for initialization
     public static NotificationScreen getInstance()
     {
@@ -21,7 +22,7 @@ public class NotificationScreen : MonoBehaviour {
     }
     void Start()
     {
-
+        gameOver = false;
         notifyText = "This is your time to escape!!!" +
             " 1. Find keys and free your friends" +
             " 2. Avoid the securityguards" +
@@ -33,6 +34,11 @@ public class NotificationScreen : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (gameOver)
+        {
+            textBox.text = "";
+            return;
+        }
         if (Time.time >= startTime & (startTime + duration) > Time.time)
         {
             textBox.text = notifyText;
@@ -47,4 +53,5 @@ public class NotificationScreen : MonoBehaviour {
         duration = length;
         startTime = sTime;
     }
+    
 }

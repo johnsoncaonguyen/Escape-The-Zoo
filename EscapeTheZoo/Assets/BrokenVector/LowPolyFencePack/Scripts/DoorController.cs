@@ -120,9 +120,7 @@ namespace BrokenVector.LowPolyFencePack
         {
             var clip = GetCurrentAnimation();
             animator[clip].speed = AnimationSpeed;
-            Debug.Log("Playing" + clip);
             bool result = animator.Play(clip);
-            Debug.Log("Playing the clip was " + result);
         }
 
         private string GetCurrentAnimation()

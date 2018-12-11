@@ -18,8 +18,7 @@ public class AICop : MonoBehaviour {
     public enum AIStates { Patrol, Chase, Flying, Eating }
     AIStates AIstate;
     public float chaseDistance,stealDistance;
-    bool gameOver = false;
-    int gameOverTime;
+    static int gameOverTime;
     float flyTime = 0, startTime = 0;
     public bool hasKey = false;
     
@@ -31,7 +30,6 @@ public class AICop : MonoBehaviour {
         anim = GetComponent<Animation>();
         vReporter = player.GetComponent<VelocityReporter>();
         rB = GetComponent<Rigidbody>();
-        gameOver = false;
         AIstate = AIStates.Patrol;
         startTime = 0;
         SetNextWaypoint();
@@ -40,25 +38,27 @@ public class AICop : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(gameOver)
+        if(NotificationScreen.gameOver)
         {
-            if( (int)Time.time - gameOverTime > 3)
+            if( ((int)Time.time - gameOverTime) > 5)
             {
+                print(Time.time);
                 print("Shifting scene now");
                 SceneManager.LoadScene("MainMenu");
-                gameOver = false;
+                NotificationScreen.gameOver = false;
                 return;
             }
             return;
         }
-        rB.velocity = Vector3.zero;
-        rB.angularVelocity = Vector3.zero;
+
         switch (AIstate)
         {
             case AIStates.Patrol:
+                setVelocities();
                 patrol();
                 break;
             case AIStates.Chase:
+                setVelocities();
                 chase();
                 break;
             case AIStates.Flying:
@@ -69,6 +69,11 @@ public class AICop : MonoBehaviour {
                 break;
         }
 
+    }
+    void setVelocities()
+    {
+        rB.velocity = Vector3.zero;
+        rB.angularVelocity = Vector3.zero;
     }
     private void fly()
     {
@@ -110,19 +115,23 @@ public class AICop : MonoBehaviour {
     }
     private void endGame()
     {
-        nav_mesh.isStopped = true;
-        //player.GetComponent<Animator>().SetBool("caught",true);
-        print("Game Over");
-        gameOver = true;
-        gameOverTime = (int)Time.time;
-        Animator gameOverAnimator = gameOverHud.GetComponent<Animator>();
-        anim.Play("Whistle");
-        gameOverAnimator.Play("GameOver");
-        GameData gd = new GameData();
-        gd.Load();
-        gd.updateScore(ScoreSystem.getInstance().curScore);
-        print(gd.scores.ToArray()[0]);
-        gd.Save();
+        if (!NotificationScreen.gameOver)
+        {
+            nav_mesh.isStopped = true;
+            //player.GetComponent<Animator>().SetBool("caught",true);
+            print("Game Over");
+            NotificationScreen.gameOver = true;
+            gameOverTime = (int)Time.time;
+            Debug.Log("GO time" + gameOverTime);
+            Animator gameOverAnimator = gameOverHud.GetComponent<Animator>();
+            anim.Play("Whistle");
+            gameOverAnimator.Play("GameOver");
+            GameData gd = new GameData();
+            gd.Load();
+            gd.updateScore(ScoreSystem.getInstance().curScore);
+            print(gd.scores.ToArray()[0]);
+            gd.Save();
+        }
     }
 
     private void patrol()

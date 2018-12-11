@@ -56,7 +56,6 @@ public class Weapons : MonoBehaviour
         weaponModels[(int)weapons.GLOVE].GetComponentInChildren<GloveHit>().active = true;
         Rigidbody rb = weaponModels[(int)weapons.GLOVE].GetComponent<Rigidbody>();
         rb.velocity = 100 * this.transform.forward;
-        print("setting position to " + this.transform.position);
         //setActiveWeapon(weapons.NONE);
 
     }
@@ -67,7 +66,6 @@ public class Weapons : MonoBehaviour
         weaponModels[(int)weapons.ROCKET].transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
         weaponModels[(int)weapons.ROCKET].GetComponent<Rigidbody>().velocity = Vector3.zero;
         weaponModels[(int)weapons.ROCKET].GetComponentInChildren<RocketHit>().active = true;
-        print("setting position to " + this.transform.position);
         //setActiveWeapon(weapons.NONE);
 
     }
@@ -78,7 +76,6 @@ public class Weapons : MonoBehaviour
         weaponModels[(int)weapons.DONUT].transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
         weaponModels[(int)weapons.DONUT].GetComponent<Rigidbody>().velocity = Vector3.zero;
         weaponModels[(int)weapons.DONUT].GetComponentInChildren<DonutHit>().active = true;
-        print("setting position to " + this.transform.position);
         //setActiveWeapon(weapons.NONE);
 
     }

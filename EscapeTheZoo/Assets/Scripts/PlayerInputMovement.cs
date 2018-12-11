@@ -43,8 +43,6 @@ public class PlayerInputMovement : MonoBehaviour {
 
         anim.SetFloat("realSpeed", realSpeed);
 
-        Debug.Log("RealSpeed: " + realSpeed);
-
         float moveX = inputH * turnMaxSpeed * Time.deltaTime;
         float moveZ = inputV * realSpeed * Time.deltaTime;
 
