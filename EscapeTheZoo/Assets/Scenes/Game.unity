@@ -5716,7 +5716,7 @@ Prefab:
     - target: {fileID: 11430402, guid: 3ad8812903a70904f96d2fb56031ca18, type: 2}
       propertyPath: openAnimation
       value: 
-      objectReference: {fileID: 7400000, guid: d70931b351fe10a45a0bfc07fd362a1b, type: 3}
+      objectReference: {fileID: 7400004, guid: 919734941a900d24090f2925025373f2, type: 3}
     - target: {fileID: 11136660, guid: 3ad8812903a70904f96d2fb56031ca18, type: 2}
       propertyPath: m_Animations.Array.data[0]
       value: 
@@ -80708,6 +80708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1402207064}
+  gameEndText: {fileID: 298721588}
   gameOverText: {fileID: 602492370}
 --- !u!1001 &1924429888
 Prefab:

@@ -37,8 +37,13 @@ public class EscapedScript : MonoBehaviour {
         winGameTime = (int)Time.time;
         Animator youEscaped = winGameHud.GetComponent<Animator>();
         youEscaped.Play("WinGameClip");
+        GameData gd = new GameData();
+        gd.Load();
+        gd.updateScore(ScoreSystem.getInstance().curScore);
+        gd.Save();
+
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "TouchMeCube")

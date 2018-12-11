@@ -112,6 +112,11 @@ public class AICop : MonoBehaviour {
         Animator gameOverAnimator = gameOverHud.GetComponent<Animator>();
         anim.Play("Whistle");
         gameOverAnimator.Play("GameOver");
+        GameData gd = new GameData();
+        gd.Load();
+        gd.updateScore(ScoreSystem.getInstance().curScore);
+        print(gd.scores.ToArray()[0]);
+        gd.Save();
     }
 
     private void patrol()

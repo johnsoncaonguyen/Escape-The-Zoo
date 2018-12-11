@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour {
-    float curScore;
+    public float curScore { get; set; }
     float curModifier;
     public Text scoreText;
+    public Text gameEndText;
     public TMPro.TextMeshProUGUI gameOverText;
     public enum scType {NONE, ROCKET, DONUT, PUNCH };
     scType type;
@@ -28,8 +29,9 @@ public class ScoreSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         scoreText.text = "Chaos Score : "+curScore;
-        gameOverText.text = "Game Over \n Your Score :" + curScore;
-	}
+        gameOverText.text = "Game Over \n Your Score : " + curScore;
+        gameEndText.text = "You escaped \n Your Score : " + curScore;
+    }
 
     public void addToScore(float val, scType mType)
     {

@@ -127,9 +127,7 @@ namespace BrokenVector.LowPolyFencePack
 
         private string GetCurrentAnimation()
         {
-            if (CurrentState == DoorState.Open)
-                return "DoorOpen";
-            return "DoorClose";
+            return CurrentState.ToString();
         }
     }
 }
