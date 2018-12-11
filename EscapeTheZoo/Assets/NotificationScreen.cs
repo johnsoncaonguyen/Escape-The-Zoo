@@ -21,7 +21,7 @@ public class NotificationScreen : MonoBehaviour {
     }
     void Start()
     {
-        notifyText = "Hello Mr. Elephant \n This is what you have to do: \n 1.Avoid the security guard \n 2.Free your friends \n3.Escape the zoo";
+        notifyText = "";
         startTime = Time.time;
         duration = 8;
     }
@@ -29,7 +29,7 @@ public class NotificationScreen : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > startTime & startTime + duration > Time.time)
+        if (Time.time >= startTime & (startTime + duration) > Time.time)
         {
             textBox.text = notifyText;
         }
