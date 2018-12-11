@@ -6,19 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class AICop : MonoBehaviour {
     public GameObject player;
+    public GameObject key;
+    public GameObject[] waypoints;
+    public GameObject gameOverHud;
+    public GameObject spawnPoint;
     NavMeshAgent nav_mesh;
     Animation anim;
     VelocityReporter vReporter;
-    public GameObject[] waypoints;
     int currWaypoint = -1;
     public enum AIStates { Patrol, Chase, Flying, Eating }
     AIStates AIstate;
-    public float chaseDistance;
-    public GameObject gameOverHud;
+    public float chaseDistance,stealDistance;
     bool gameOver = false;
     int gameOverTime;
     float flyTime = 0, startTime = 0;
-    public GameObject spawnPoint;
+    public bool hasKey = false;
     
     //public bool canFire;
     // Use this for initialization
@@ -136,8 +138,25 @@ public class AICop : MonoBehaviour {
             SetNextWaypoint();
         }
         if (distanceToPlayer.magnitude < chaseDistance - 10 && dir > 0)
+        {
             setState(AIStates.Chase);
+        }
+        else if (hasKey && distanceToPlayer.magnitude < stealDistance && dir < 0)
+        {
+            NotificationScreen.getInstance().displayNotification("Press F to pay respects", Time.time, 2);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                stealKey();
+            }
+        }
         anim.Play("Walk");
+    }
+    void stealKey()
+    {
+        key.transform.position = player.transform.position;
+
+        hasKey = false;
     }
     public void setState(AIStates state)
     {
