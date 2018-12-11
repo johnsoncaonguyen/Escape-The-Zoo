@@ -3,6 +3,21 @@ guid: 88cf5725ee81ecb4dbb7b708bb874b9c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_015
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_015
+    2100000: red
+    2300000: Cube
+    2300002: Cube_015
+    3300000: Cube
+    3300002: Cube_015
+    4300000: Cube_015
+    4300002: Cube
+    7400000: Default Take
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -56,7 +71,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
